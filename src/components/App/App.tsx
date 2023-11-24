@@ -1,12 +1,8 @@
 import "./App.css";
 import MainTranslator from "../MainTranslator";
-import TranslatorProvider from "../TranslatorProvider";
+// import TranslatorProvider from "../TranslatorProvider";
 function App() {
-  return (
-    <TranslatorProvider>
-      <MainTranslator />
-    </TranslatorProvider>
-  );
+  return <MainTranslator />;
 }
 
 export default App;

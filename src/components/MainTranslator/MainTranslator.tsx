@@ -6,6 +6,10 @@ import TranslatorCard from "../TranslatorCard";
 const languages = ["English", "French", "Ukrainian"];
 
 const MainTranslator = () => {
+  const [toTranslate, setToTranslate] = React.useState(
+    "Hello, how are you' to French"
+  );
+  const [translated, setTranslated] = React.useState("");
   return (
     <div className={styles.wrapper}>
       <header>
@@ -14,9 +18,13 @@ const MainTranslator = () => {
       <main>
         <TranslatorCard
           languages={languages}
+          text={toTranslate}
+          setText={setToTranslate}
           className={styles.toTranslateCard}
         ></TranslatorCard>
         <TranslatorCard
+          text={translated}
+          setText={setTranslated}
           languages={languages}
           className={styles.translatedCard}
         ></TranslatorCard>

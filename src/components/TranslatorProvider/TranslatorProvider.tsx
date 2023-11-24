@@ -8,8 +8,8 @@ type TranslatorContextType = {
 };
 
 const TranslatorContext = React.createContext<TranslatorContextType>({
-  toTranslate: "English",
-  translated: "French",
+  toTranslate: "",
+  translated: "",
   setToTranslate: () => {},
   setTranslated: () => {},
 });
@@ -17,8 +17,10 @@ const TranslatorContext = React.createContext<TranslatorContextType>({
 const TranslatorProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [toTranslate, setToTranslate] = React.useState("English");
-  const [translated, setTranslated] = React.useState("French");
+  const [toTranslate, setToTranslate] = React.useState(
+    "Hello, how are you' to French"
+  );
+  const [translated, setTranslated] = React.useState("");
 
   return (
     <TranslatorContext.Provider

@@ -17,9 +17,9 @@ main {
 }
 
 .toTranslateCard {
-  background-color: #212936;
+  background-color: rgba(33, 41, 54, 0.8);
 }
 
 .translatedCard {
-  background-color: #121826;
+  background-color: rgba(18, 24, 38, 0.8);
 }
