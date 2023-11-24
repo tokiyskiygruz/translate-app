@@ -1,5 +1,8 @@
 .cardWrapper {
   display: flex;
   min-width: 500px;
-  background-color: blueviolet;
+  opacity: 0.8;
+  border: 1px solid #4d5562;
+  border-radius: 10px;
+  padding: 24px;
 }

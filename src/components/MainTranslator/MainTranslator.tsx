@@ -5,18 +5,24 @@ import TranslatorCard from "../TranslatorCard";
 
 const languages = ["English", "French", "Ukrainian"];
 
-function MainTranslator() {
+const MainTranslator = () => {
   return (
     <div className={styles.wrapper}>
       <header>
         <img src={Logo} alt="Translator logo" />
       </header>
       <main>
-        <TranslatorCard languages={languages}></TranslatorCard>
-        <TranslatorCard languages={languages}></TranslatorCard>
+        <TranslatorCard
+          languages={languages}
+          className={styles.toTranslateCard}
+        ></TranslatorCard>
+        <TranslatorCard
+          languages={languages}
+          className={styles.translatedCard}
+        ></TranslatorCard>
       </main>
     </div>
   );
-}
+};
 
 export default MainTranslator;

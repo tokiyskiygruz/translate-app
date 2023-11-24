@@ -13,4 +13,13 @@ header {
 main {
   display: flex;
   justify-content: center;
+  gap: 15px;
+}
+
+.toTranslateCard {
+  background-color: #212936;
+}
+
+.translatedCard {
+  background-color: #121826;
 }

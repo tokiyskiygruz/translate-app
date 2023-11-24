@@ -3,11 +3,15 @@ import styles from "./TranslatorCard.module.css";
 
 interface TranslatorCardProps {
   languages: string[];
+  className?: string | React.CSSProperties;
 }
 
-function TranslatorCard({ languages }: TranslatorCardProps) {
+const TranslatorCard: React.FC<TranslatorCardProps> = ({
+  languages,
+  className,
+}) => {
   return (
-    <div className={styles.cardWrapper}>
+    <div className={`${styles.cardWrapper} ${className}`}>
       <div className={styles.cardControl}>
         <button>Detect language</button>
         {languages.map((language) => (
@@ -16,6 +20,6 @@ function TranslatorCard({ languages }: TranslatorCardProps) {
       </div>
     </div>
   );
-}
+};
 
 export default TranslatorCard;
