@@ -1,26 +1,29 @@
-import * as React from "react";
+import React from "react";
 import styles from "./TranslatorCard.module.css";
 import TextButton from "../TextButton";
 import CardTextarea from "../CardTextarea";
-
+import { TranslatorContext } from "../TranslatorProvider";
+import { LANGUAGES } from "../../constants/languages";
 interface TranslatorCardProps {
-  languages: string[];
-  className?: string | React.CSSProperties;
-  text: string;
-  setText: React.Dispatch<React.SetStateAction<string>>;
+  type: "source" | "target";
 }
 
-const TranslatorCard: React.FC<TranslatorCardProps> = ({
-  languages,
-  className,
-  text,
-  setText,
-}) => {
+const TranslatorCard: React.FC<TranslatorCardProps> = ({ type }) => {
+  const { toTranslate, translated, setToTranslate, setTranslated } =
+    React.useContext(TranslatorContext);
+
+  const text = type === "source" ? toTranslate : translated;
+
+  const setText = type === "source" ? setToTranslate : setTranslated;
+
+  const className =
+    type === "source" ? styles.toTranslateCard : styles.translatedCard;
+
   return (
     <div className={`${styles.cardWrapper} ${className}`}>
       <div className={styles.cardControl}>
         <TextButton>Detect language</TextButton>
-        {languages.map((language) => (
+        {LANGUAGES.map((language) => (
           <TextButton key={language}>{language}</TextButton>
         ))}
       </div>
@@ -28,6 +31,7 @@ const TranslatorCard: React.FC<TranslatorCardProps> = ({
       <div className={styles.textareaWrapper}>
         <CardTextarea text={text} setText={setText}></CardTextarea>
       </div>
+      {type === "target" && <button>3AJlyJLA</button>}
     </div>
   );
 };

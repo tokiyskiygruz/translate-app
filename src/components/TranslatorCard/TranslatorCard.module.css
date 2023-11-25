@@ -18,3 +18,11 @@
   margin: 20px 0px;
   background-color: #4d5562;
 }
+
+.toTranslateCard {
+  background-color: rgba(33, 41, 54, 0.8);
+}
+
+.translatedCard {
+  background-color: rgba(18, 24, 38, 0.8);
+}
