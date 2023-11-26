@@ -2,7 +2,7 @@
   display: flex;
   min-width: 500px;
   border: 1px solid #4d5562;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 24px;
   flex-direction: column;
 }
@@ -18,7 +18,12 @@
   margin: 20px 0px;
   background-color: #4d5562;
 }
-
+.cardFooter {
+  display: flex;
+  & button {
+    margin-left: auto;
+  }
+}
 .toTranslateCard {
   background-color: rgba(33, 41, 54, 0.8);
 }

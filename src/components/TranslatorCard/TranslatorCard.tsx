@@ -19,6 +19,16 @@ const TranslatorCard: React.FC<TranslatorCardProps> = ({ type }) => {
   const className =
     type === "source" ? styles.toTranslateCard : styles.translatedCard;
 
+  const handleSaveClick = () => {
+    navigator.clipboard.writeText(text);
+  };
+
+  const handleSpeakClick = () => {
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    window.speechSynthesis.speak(utterance);
+  };
+
   return (
     <div className={`${styles.cardWrapper} ${className}`}>
       <div className={styles.cardControl}>
@@ -31,7 +41,13 @@ const TranslatorCard: React.FC<TranslatorCardProps> = ({ type }) => {
       <div className={styles.textareaWrapper}>
         <CardTextarea text={text} setText={setText}></CardTextarea>
       </div>
-      {type === "target" && <button>3AJlyJLA</button>}
+      <div className={styles.cardFooter}>
+        <div className={styles.buttonsContainer}>
+          <button onClick={handleSaveClick}>save text</button>
+          <button onClick={handleSpeakClick}>speak text</button>
+        </div>
+        {type === "source" && <button>A̲ Translate</button>}
+      </div>
     </div>
   );
 };

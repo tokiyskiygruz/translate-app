@@ -10,6 +10,7 @@ textarea {
   margin: 0;
   padding: 0;
   border: none;
+  min-height: 100px;
   background: none;
   font-size: 1em;
   font-family: inherit;
