@@ -5,6 +5,7 @@ export type TranslatorContextType = {
   translated: string;
   setToTranslate: React.Dispatch<React.SetStateAction<string>>;
   setTranslated: React.Dispatch<React.SetStateAction<string>>;
+  fetchData: () => Promise<void>;
 };
 
 export const TranslatorContext = React.createContext<TranslatorContextType>({
@@ -12,34 +13,40 @@ export const TranslatorContext = React.createContext<TranslatorContextType>({
   translated: "",
   setToTranslate: () => {},
   setTranslated: () => {},
+  fetchData: async () => {},
 });
 
 const TranslatorProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [toTranslate, setToTranslate] = React.useState(
-    "Hello, how are you' to French"
-  );
+  const [toTranslate, setToTranslate] = React.useState("Hello, how are you");
   const [translated, setTranslated] = React.useState("");
 
-  React.useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `https://api.mymemory.translated.net/get?q=${toTranslate}&langpair=en|fr`
-        );
-        const data = await response.json();
-        setTranslated(data.responseData.translatedText);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    if (toTranslate) {
-      fetchData();
+  const fetchData = React.useCallback(async () => {
+    try {
+      const response = await fetch(
+        `https://api.mymemory.translated.net/get?q=${toTranslate}&langpair=en|fr`
+      );
+      const data = await response.json();
+      setTranslated(data.responseData.translatedText);
+    } catch (error) {
+      console.log(error);
     }
   }, [toTranslate]);
 
-  const context = { toTranslate, translated, setToTranslate, setTranslated };
+  React.useEffect(() => {
+    if (toTranslate) {
+      fetchData();
+    }
+  }, [toTranslate, fetchData]);
+
+  const context = {
+    toTranslate,
+    translated,
+    setToTranslate,
+    setTranslated,
+    fetchData,
+  };
 
   return (
     <TranslatorContext.Provider value={context}>

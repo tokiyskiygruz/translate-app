@@ -4,12 +4,15 @@ import TextButton from "../TextButton";
 import CardTextarea from "../CardTextarea";
 import { TranslatorContext } from "../TranslatorProvider";
 import { LANGUAGES } from "../../constants/languages";
+import soundLogo from "../../assets/sound_max_fill.svg";
+import copyLogo from "../../assets/Copy.svg";
+import changeLogo from "../../assets/Horizontal_top_left_main.svg";
 interface TranslatorCardProps {
   type: "source" | "target";
 }
 
 const TranslatorCard: React.FC<TranslatorCardProps> = ({ type }) => {
-  const { toTranslate, translated, setToTranslate, setTranslated } =
+  const { toTranslate, translated, setToTranslate, setTranslated, fetchData } =
     React.useContext(TranslatorContext);
 
   const text = type === "source" ? toTranslate : translated;
@@ -32,21 +35,32 @@ const TranslatorCard: React.FC<TranslatorCardProps> = ({ type }) => {
   return (
     <div className={`${styles.cardWrapper} ${className}`}>
       <div className={styles.cardControl}>
-        <TextButton>Detect language</TextButton>
+        {type === "source" && <TextButton>Detect language</TextButton>}
         {LANGUAGES.map((language) => (
           <TextButton key={language}>{language}</TextButton>
         ))}
+        {type === "target" && (
+          <button className={styles.iconButton + " " + styles.swapButton}>
+            <img src={changeLogo} alt="" />
+          </button>
+        )}
       </div>
       <div className={styles.divider}></div>
-      <div className={styles.textareaWrapper}>
-        <CardTextarea text={text} setText={setText}></CardTextarea>
-      </div>
+      <CardTextarea type={type} text={text} setText={setText}></CardTextarea>
       <div className={styles.cardFooter}>
         <div className={styles.buttonsContainer}>
-          <button onClick={handleSaveClick}>save text</button>
-          <button onClick={handleSpeakClick}>speak text</button>
+          <button className={styles.iconButton} onClick={handleSaveClick}>
+            <img src={copyLogo} alt="" />
+          </button>
+          <button className={styles.iconButton} onClick={handleSpeakClick}>
+            <img src={soundLogo} alt="" />
+          </button>
         </div>
-        {type === "source" && <button>A̲ Translate</button>}
+        {type === "source" && (
+          <button onClick={fetchData} className={styles.translateButton}>
+            <span className={styles.underlined}>A</span> Translate
+          </button>
+        )}
       </div>
     </div>
   );

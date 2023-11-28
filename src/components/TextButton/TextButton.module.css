@@ -2,7 +2,8 @@
   padding: 12px;
   cursor: pointer;
   border: none;
-  border-radius: 12px;
+  font-family: "NunitoBold";
   font-size: 12px;
+  border-radius: 12px;
   background-color: transparent;
 }

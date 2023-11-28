@@ -2,6 +2,7 @@
   display: flex;
   position: relative;
   flex-direction: column;
+  margin-bottom: 10px;
 }
 
 textarea {
@@ -12,7 +13,7 @@ textarea {
   border: none;
   min-height: 100px;
   background: none;
-  font-size: 1em;
+  font: 1rem "NunitoBold" !important;
   font-family: inherit;
   color: inherit;
   resize: none; /* Optional: Disable textarea resizing */
@@ -21,4 +22,8 @@ textarea {
 .counter {
   display: flex;
   justify-content: flex-end;
+  font-family: "NunitoMedium";
+  font-size: 12px;
+  pointer-events: none;
+  color: #4d5562;
 }

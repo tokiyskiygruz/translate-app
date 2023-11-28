@@ -63,3 +63,14 @@ body {
   background-size: 100%;
   background-color: #040711;
 }
+
+@font-face {
+  font-family: "NunitoMedium";
+  src: local("NunitoMedium"), url("./fonts/nunito/Nunito-Medium.ttf");
+}
+
+@font-face {
+  font-family: "NunitoBold";
+  src: local("NunitoBold"), url("./fonts/nunito/Nunito-Bold.ttf");
+  font-weight: bold;
+}

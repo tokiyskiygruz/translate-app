@@ -8,6 +8,8 @@
 }
 
 .cardControl {
+  display: flex;
+  align-items: center;
   *:not(:last-child) {
     margin-right: 14px;
   }
@@ -20,6 +22,7 @@
 }
 .cardFooter {
   display: flex;
+  margin-top: auto;
   & button {
     margin-left: auto;
   }
@@ -30,4 +33,37 @@
 
 .translatedCard {
   background-color: rgba(18, 24, 38, 0.8);
+}
+
+.iconButton {
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 12px;
+  border: 2px solid #394150;
+  background-color: transparent;
+}
+.swapButton {
+  margin-left: auto;
+}
+
+.buttonsContainer {
+  display: flex;
+  align-items: flex-end;
+  *:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+.translateButton {
+  padding: 10px 25px;
+  cursor: pointer;
+  font-family: "NunitoBold";
+  font-size: 16px;
+  background-color: #3662e3;
+  border-radius: 12px;
+  border: 1px solid #394150;
+  .underlined {
+    font-size: 18px;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+  }
 }
